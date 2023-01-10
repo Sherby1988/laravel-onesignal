@@ -171,14 +171,14 @@ class OneSignalClient
                 "en" => $headings
             );
         }
-        
+
         if(isset($subtitle)){
             $params['subtitle'] = array(
                 "en" => $subtitle
             );
         }
 
-        $this->sendNotificationCustom($params);
+        return $this->sendNotificationCustom($params);
     }
 
     /**
@@ -230,7 +230,7 @@ class OneSignalClient
             );
         }
 
-        $this->sendNotificationCustom($params);
+        return $this->sendNotificationCustom($params);
     }
     public function sendNotificationUsingTags($message, $tags, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null) {
         $contents = array(
@@ -264,14 +264,14 @@ class OneSignalClient
                 "en" => $headings
             );
         }
-        
+
         if(isset($subtitle)){
             $params['subtitle'] = array(
                 "en" => $subtitle
             );
         }
 
-        $this->sendNotificationCustom($params);
+        return $this->sendNotificationCustom($params);
     }
 
     public function sendNotificationToAll($message, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null) {
@@ -306,14 +306,14 @@ class OneSignalClient
                 "en" => $headings
             );
         }
-        
+
         if(isset($subtitle)){
             $params['subtitle'] = array(
                 "en" => $subtitle
             );
         }
 
-        $this->sendNotificationCustom($params);
+        return $this->sendNotificationCustom($params);
     }
 
     public function sendNotificationToSegment($message, $segment, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null) {
@@ -348,14 +348,14 @@ class OneSignalClient
                 "en" => $headings
             );
         }
-        
+
         if(isset($subtitle)){
             $params['subtitle'] = array(
                 "en" => $subtitle
             );
         }
 
-        $this->sendNotificationCustom($params);
+        return $this->sendNotificationCustom($params);
     }
 
     public function deleteNotification($notificationId, $appId = null) {
@@ -415,7 +415,7 @@ class OneSignalClient
         $this->usesJSON();
 
         $endpoint = self::ENDPOINT_NOTIFICATIONS;
-        
+
         if(!$app_id) {
             $app_id = $this->appId;
         }
