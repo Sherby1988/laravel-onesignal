@@ -139,7 +139,7 @@ class OneSignalClient
         return $this;
     }
 
-    public function sendNotificationToUser($message, $userId, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null) {
+    public function sendNotificationToUser($message, $userId, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null, $image = null) {
         $contents = array(
             "en" => $message
         );
@@ -178,6 +178,14 @@ class OneSignalClient
             );
         }
 
+        if (!empty($image)) {
+            $params['big_picture'] = $image;
+            $params['ios_attachments'] = [
+                'id' => $image
+            ];
+            $params['huawei_big_picture'] = $image;
+        }
+
         return $this->sendNotificationCustom($params);
     }
 
@@ -191,7 +199,7 @@ class OneSignalClient
      * @param null $headings
      * @param null $subtitle
      */
-    public function sendNotificationToExternalUser($message, $userId, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null) {
+    public function sendNotificationToExternalUser($message, $userId, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null, $image = null) {
         $contents = array(
             "en" => $message
         );
@@ -230,9 +238,17 @@ class OneSignalClient
             );
         }
 
+        if (!empty($image)) {
+            $params['big_picture'] = $image;
+            $params['ios_attachments'] = [
+                'id' => $image
+            ];
+            $params['huawei_big_picture'] = $image;
+        }
+
         return $this->sendNotificationCustom($params);
     }
-    public function sendNotificationUsingTags($message, $tags, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null) {
+    public function sendNotificationUsingTags($message, $tags, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null, $image = null) {
         $contents = array(
             "en" => $message
         );
@@ -271,10 +287,18 @@ class OneSignalClient
             );
         }
 
+        if (!empty($image)) {
+            $params['big_picture'] = $image;
+            $params['ios_attachments'] = [
+                'id' => $image
+            ];
+            $params['huawei_big_picture'] = $image;
+        }
+
         return $this->sendNotificationCustom($params);
     }
 
-    public function sendNotificationToAll($message, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null) {
+    public function sendNotificationToAll($message, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null, $image = null) {
         $contents = array(
             "en" => $message
         );
@@ -313,10 +337,18 @@ class OneSignalClient
             );
         }
 
+        if (!empty($image)) {
+            $params['big_picture'] = $image;
+            $params['ios_attachments'] = [
+                'id' => $image
+            ];
+            $params['huawei_big_picture'] = $image;
+        }
+
         return $this->sendNotificationCustom($params);
     }
 
-    public function sendNotificationToSegment($message, $segment, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null) {
+    public function sendNotificationToSegment($message, $segment, $url = null, $data = null, $buttons = null, $schedule = null, $headings = null, $subtitle = null, $image = null) {
         $contents = array(
             "en" => $message
         );
@@ -353,6 +385,14 @@ class OneSignalClient
             $params['subtitle'] = array(
                 "en" => $subtitle
             );
+        }
+
+        if (!empty($image)) {
+            $params['big_picture'] = $image;
+            $params['ios_attachments'] = [
+                'id' => $image
+            ];
+            $params['huawei_big_picture'] = $image;
         }
 
         return $this->sendNotificationCustom($params);
